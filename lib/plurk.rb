@@ -20,6 +20,7 @@ module Plurk
     :get_plurk => {:path => "/API/Timeline/getPlurk", :login_required => true, :required_params => [:plurk_id]},
     :get_plurks => {:path => "/API/Timeline/getPlurks", :login_required => true},
     :get_unread_plurks => {:path => "/API/Timeline/getUnreadPlurks", :login_required => true},
+    :get_unread_count => {:path => "/API/Polling/getUnreadCount", :login_required => true},
     :plurk_add => {:path => "/API/Timeline/plurkAdd", :login_required => true, :required_params => [:content, :qualifier]},
     :plurk_delete => {:path => "/API/Timeline/plurkDelete", :login_required => true, :required_params => [:plurk_id]},
     :plurk_edit => {:path => "/API/Timeline/plurkEdit", :login_required => true, :required_params => [:plurk_id, :content]},
@@ -122,6 +123,10 @@ module Plurk
     
     def get_unread_plurks(params={})
       send_request(:get_unread_plurks, params)
+    end
+    
+    def get_unread_count(params={})
+      send_request(:get_unread_count, params)
     end
     
     # params: content, qualifier 
